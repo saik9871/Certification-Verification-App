@@ -1,0 +1,114 @@
+# Certificate Verification System
+
+## Project Overview
+A React-based web application that allows users to upload and verify certificates using cryptographic hashes and local storage. The system provides a secure way to store certificate data and images, with easy verification capabilities.
+
+## Tech Stack
+
+### Core Technologies
+- React 18.x - Frontend UI library
+- TypeScript 5.x - Static typing and enhanced developer experience
+- Vite 5.x - Build tool and development server
+
+### UI Components
+- Material-UI (MUI) v5 - React component library for consistent design
+  - @mui/material - Core components
+  - @mui/icons-material - Material design icons
+
+### Utilities
+- crypto-js - For generating secure hashes of certificates
+- uuid - Generating unique identifiers
+- @types/crypto-js - TypeScript definitions for crypto-js
+- @types/node - Node.js TypeScript definitions
+- @types/uuid - TypeScript definitions for UUID
+
+## Features
+
+1. Certificate Upload
+   - File upload for PNG certificates
+   - Input validation for name and college
+   - Generates unique hash using SHA-256
+   - Converts images to base64 for storage
+   - Stores data in localStorage
+
+2. Certificate Verification
+   - Hash-based certificate lookup
+   - Displays certificate details
+   - Shows original certificate image
+   - Real-time validation
+
+## Project Structure
+src/
+├── components/
+│ ├── UploadCertificate.tsx # Certificate upload form
+│ └── VerifyCertificate.tsx # Certificate verification form
+├── utils/
+│ ├── fileSystem.ts # Storage and hash generation
+│ ├── storage.ts # Image processing
+│ ├── validation.ts # Input validation
+│ └── index.ts # Utility exports
+└── App.tsx # Main application component
+
+## Storage Implementation
+- Uses browser's localStorage for data persistence
+- Certificates stored as base64 strings
+- Certificate metadata stored separately
+- Hash-based retrieval system
+
+## Security Features
+- SHA-256 hashing for certificate identification
+- File type validation
+- Input sanitization
+- Unique hash generation using timestamp and UUID
+
+## Getting Started
+
+1. Install dependencies:
+bash
+npm install
+
+
+2. Required dependencies:bash
+npm install @mui/material @emotion/react @emotion/styled
+npm install @mui/icons-material
+npm install crypto-js uuid
+npm install -D @types/crypto-js @types/node @types/uuid
+npm install -D @vitejs/plugin-react
+
+3. Run development server:
+bash
+npm run dev
+
+## Usage
+1. Upload Tab:
+   - Enter certificate holder's name
+   - Input college/institution name
+   - Upload PNG certificate file
+   - Submit and receive unique hash
+   - Copy hash for verification
+   
+2. Verify Tab:
+   - Paste previously received hash
+   - View certificate details
+     - Holder's name
+     - Institution
+     - Issue date
+     - Original certificate image
+   - Verify authenticity through hash match
+
+## Limitations
+- Storage Constraints
+  - localStorage 5MB limit
+  - No persistent server storage
+  - Limited to current browser
+  
+- File Restrictions
+  - PNG format only
+  - Size limitations
+  - No batch processing
+  
+- Security Considerations
+  - Client-side only validation
+  - No blockchain integration
+  - Limited to browser security
+
